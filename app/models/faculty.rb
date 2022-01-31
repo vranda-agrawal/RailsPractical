@@ -9,7 +9,7 @@ class Faculty < ApplicationRecord
 
     # def DOB_cannot_be_in_the_future
     #     if DOB.present? && DOB > Date.today
-    #       errors.add(:DOB, "can't be in the past")
+    #       errors.add(:DOB, "can't be in the future")
     #     end
     #   end
 end

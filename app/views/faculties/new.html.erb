@@ -1,4 +1,4 @@
-<h1>Add New Student</h1>
+<h1>Add New Faculty</h1>
 <%if @faculty.errors.any? %>
 
 <h2> the following errors prevented the Faculty from being saved</h2>
@@ -9,6 +9,7 @@
 </ul>
 <% end %>
 <%= form_for @faculty do |form| %>
+
  <div>
     <%= form.label :first_name, style: "display: block" %>
     <%= form.text_field :first_name %>
