@@ -6,13 +6,13 @@ class ImagesController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-      @image= Image.find(params['id'])
+    @image= Image.find(params['id'])
   end
 
   # GET /products/new
   def new
-      @image = Image.new
-    end
+    @image = Image.new
+  end
 
   # GET /products/1/edit
   def edit

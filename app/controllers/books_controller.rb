@@ -7,19 +7,17 @@ class BooksController < ApplicationController
 
   #GET /products/1 or /products/1.json
   def show
-      @book= Book.find(params['id'])
-      
+    @book= Book.find(params['id'])  
   end
 
   #GET /products/new
   def new
-      @book = Book.new
-    end
+    @book = Book.new
+  end
 
   #GET /products/1/edit
   def edit
-    @book= Book.find(params['id'])
-    
+    @book= Book.find(params['id'])  
   end
 
   #POST /products or /products.json
