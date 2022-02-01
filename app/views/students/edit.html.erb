@@ -1,4 +1,13 @@
 <h1>Editing Student Details</h1>
+<% if flash[:errors] %>
+<div >
+<ul>
+<% flash[:errors].each do |error| %>
+<li style="color:red;"><%= error %></li>
+<% end %>
+</ul>
+</div>
+<% end %>
 <%= form_for @student do |form| %>
   <div>
     <%= form.label :first_name, style: "display: block" %>

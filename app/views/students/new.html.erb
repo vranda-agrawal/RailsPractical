@@ -1,11 +1,12 @@
 <h1>Add New Student</h1>
-<%if @student.errors.any? %>
-  <h2> the following errors prevented the student from being saved</h2>
-  <ul>
-  <% @student.errors.full_messages.each do |msg| %>
-    <li><%= msg%></li>
-  <% end %>
-  </ul>
+<% if flash[:errors] %>
+<div >
+<ul>
+<% flash[:errors].each do |error| %>
+<li style="color:red;"><%= error %></li>
+<% end %>
+</ul>
+</div>
 <% end %>
 <%= form_for @student do |form| %>
   <div>

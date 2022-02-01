@@ -1,11 +1,12 @@
 <h1>Add New Faculty</h1>
-<%if @faculty.errors.any? %>
-  <h2> the following errors prevented the Faculty from being saved</h2>
-  <ul>
-    <% @faculty.errors.full_messages.each do |msg| %>
-      <li><%= msg%></li>
-    <% end %>
-  </ul>
+<% if flash[:errors] %>
+<div >
+<ul>
+<% flash[:errors].each do |error| %>
+<li style="color:red;"><%= error %></li>
+<% end %>
+</ul>
+</div>
 <% end %>
 <%= form_for @faculty do |form| %>
   <div>

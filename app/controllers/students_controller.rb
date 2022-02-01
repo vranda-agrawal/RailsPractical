@@ -12,16 +12,13 @@ class StudentsController < ApplicationController
   end
 
   def create
-    @student=Student.create(student_params)
-    if @student.valid?
-      #puts '---------------valid user----------------'
-      redirect_to '/students'
-    else 
-      #puts '-----------------not valid-----------------'
-      # flash[:errors] = student.errors.full_messages
-      #puts @student.errors.full_messages
-      #puts @student.errors.any?
-      render 'new'
+    student = Student.create(student_params)
+    if student.valid?
+      flash[:notice] = "Student is successfully added."
+      redirect_to student_path(student[:id])
+    else
+      flash[:errors] = student.errors.full_messages
+      redirect_to new_student_path
     end
   end
   
@@ -33,18 +30,14 @@ class StudentsController < ApplicationController
     @student = Student.find(params[:id])
     @student.update(student_params)
     if @student.valid?
-      #puts '---------------valid user----------------'
       redirect_to students_path
     else 
-      #puts '-----------------not valid-----------------'
-      #puts @student.errors.full_messages
-      #puts @student.errors.any?
-      render 'edit'
+      flash[:errors] = @student.errors.full_messages
+      redirect_to edit_student_path
     end
   end
 
   def destroy
-    puts "============================================================================="
     @student = Student.find(params[:id])
     @student.destroy
     redirect_to '/students'
