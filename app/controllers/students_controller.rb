@@ -25,7 +25,6 @@ class StudentsController < ApplicationController
     end
   end
   
-
   def edit
     @student= Student.find(params['id'])
   end
@@ -42,7 +41,6 @@ class StudentsController < ApplicationController
       #puts @student.errors.any?
       render 'edit'
     end
-  
   end
 
   def destroy

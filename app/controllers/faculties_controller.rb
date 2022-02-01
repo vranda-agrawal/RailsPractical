@@ -25,7 +25,6 @@ class FacultiesController < ApplicationController
     end
   end
   
-
   def edit
   #puts"--------------------------------------------------------"
   @faculty= Faculty.find(params['id'])
@@ -34,7 +33,7 @@ class FacultiesController < ApplicationController
   def update
   @faculty = Faculty.find(params[:id])
   @faculty.update(faculty_params)
-  if @faculty.valid?
+    if @faculty.valid?
       #puts '---------------valid user----------------'
       redirect_to '/faculties'
     else 
@@ -43,7 +42,6 @@ class FacultiesController < ApplicationController
       #puts @faculty.errors.any?
       render 'edit'
     end
-  
   end
 
   def destroy
