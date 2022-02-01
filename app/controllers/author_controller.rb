@@ -7,13 +7,12 @@ class AuthorController < ApplicationController
   # GET /products/1 or /products/1.json
   def show
       @author= Author.find(params['id'])
-      
   end
 
   # GET /products/new
   def new
       @author = Author.new
-    end
+  end
 
   # GET /products/1/edit
   def edit
