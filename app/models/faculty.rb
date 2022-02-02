@@ -7,5 +7,35 @@ class Faculty < ApplicationRecord
     t=Time.new
     t=t.strftime("%Y-%m-%d")
     validates :DOB,comparison: {less_than_or_equal_to: t,message:"birthday can't be in future"}
-    
+    after_validation :check_DOB
+
+    #ater_initialize callback
+    after_initialize do |faculty|
+        puts "Faculty object has been initialized"
+    end
+
+    #after_find callback will be called whenever active record loads the data
+    after_find do |faculty|
+        puts "Faculty Object has been found"
+    end
+
+    #after_create callback
+    after_create do |faculty|
+        puts "Faculty object has been created"
+    end
+
+    #after_update callback
+    after_update do |faculty|
+        puts "Faculty object updated"
+    end
+
+    #after_destroy callback (It will only be run when you use destroy)
+    after_destroy do |faculty|
+        puts "Faculty object has been destroyed"
+    end
+
+    private
+      def check_DOB
+          puts "DOB is : #{self.DOB}"
+      end
 end
