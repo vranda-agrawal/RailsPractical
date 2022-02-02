@@ -8,6 +8,7 @@ class Faculty < ApplicationRecord
     t=t.strftime("%Y-%m-%d")
     validates :DOB,comparison: {less_than_or_equal_to: t,message:"birthday can't be in future"}
     after_validation :check_DOB
+    after_commit :Email_Validated
 
     #ater_initialize callback
     after_initialize do |faculty|
@@ -37,5 +38,9 @@ class Faculty < ApplicationRecord
     private
       def check_DOB
           puts "DOB is : #{self.DOB}"
+      end
+
+      def show_Email_validated
+        puts "-------------------------------Email validated---------------------------------"
       end
 end

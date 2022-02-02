@@ -13,8 +13,6 @@ class Student < ApplicationRecord
 	validates :DOB,comparison: {less_than_or_equal_to: t,message:"birthday can't be in future"}
 	before_validation :check_DOB
 	after_destroy DestroyCallback.new , if: after_destroy_commit
-	after_commit :Email_Validated
-
 
 	#ater_initialize callback
 	after_initialize do |student|
@@ -50,7 +48,4 @@ class Student < ApplicationRecord
 			puts "DOB is : #{self.DOB}"
 		end
 
-		def show_Email_validated
-			puts "-------------------------------Email validated---------------------------------"
-		end
 end
