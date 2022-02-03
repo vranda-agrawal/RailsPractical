@@ -1,18 +1,18 @@
 <div class="section" >
-	<div class="container">
-				<table border='2px'>
-						<tr>
-								<th>Image ID</th>
-								<th>Image Name</th>
-								<th>Author Id</th>
-								<th>Book Id</th>
-						</tr>
-						<tr>
-								<td><%= @image.id %></td>
-								<td><%= @image.img_name %></td>
-								<td><%= @image.author.first_name  %></td>
-								<td><%= @image.book.name  %></td>
-						</tr>
-				</table>
-	</div>
+  <div class="container">
+        <table border='2px'>
+            <tr>
+                <th>Image ID</th>
+                <th>Image Name</th>
+                <th>Author Id</th>
+                <th>Book Id</th>
+            </tr>
+            <tr>
+                <td><%= @image.id %></td>
+                <td><%= @image.img_name %></td>
+                <td><%= @image.author.first_name  %></td>
+                <td><%= @image.book.name  %></td>
+            </tr>
+        </table>
+  </div>
 </div>

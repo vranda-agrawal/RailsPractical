@@ -1,23 +1,23 @@
 <div class="section" >
-	<div class="container">
-		<table border='2px'>
-			<tr>
-				<th>Image ID</th>
-				<th>Image Name</th>
-				<th>Edit</th>
-				<th>show</th>
-				<th>Delete</th>
-			</tr>
-			<% @images.each do |image| %>
-				<tr>
-					<td><%= image.id %></td>
-					<td><%= image.img_name %></td>
-					<td><%= link_to "Edit image", edit_image_path(id: image.id) %></td>
-					<td><%= link_to "Show image", image_path(id: image.id) %></td>
-					<td><%= link_to "Destroy image",edit_image_path(id: image.id),method: :delete ,data:{ confirm: "are you sure"}%></td>
-				</tr>
-			<% end %>
-		</table>
-		<%= link_to "Add a new image", new_image_path %>
-	</div>
+  <div class="container">
+    <table border='2px'>
+      <tr>
+        <th>Image ID</th>
+        <th>Image Name</th>
+        <th>Edit</th>
+        <th>show</th>
+        <th>Delete</th>
+      </tr>
+      <% @images.each do |image| %>
+        <tr>
+          <td><%= image.id %></td>
+          <td><%= image.img_name %></td>
+          <td><%= link_to "Edit image", edit_image_path(id: image.id) %></td>
+          <td><%= link_to "Show image", image_path(id: image.id) %></td>
+          <td><%= link_to "Destroy image",edit_image_path(id: image.id),method: :delete ,data:{ confirm: "are you sure"}%></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to "Add a new image", new_image_path %>
+  </div>
 </div>
