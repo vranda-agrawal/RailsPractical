@@ -6,12 +6,10 @@ end
 
 class Student < ApplicationRecord
 	validates :first_name, :last_name , presence: true
-	validates :department, inclusion: { in: %w(IT CE), message: "can't be %{value}" }
-	validates :Terms_Of_Condition, acceptance: { message: 'must be abided' }
-	t=Time.new
-	t=t.strftime("%Y-%m-%d")
-	validates :DOB,comparison: {less_than_or_equal_to: t,message:"birthday can't be in future"}
-	before_validation :check_DOB
+    validates :department, inclusion: { in: %w(IT CE), message: "can't be %{value}" }
+    validates :Terms_Of_Condition, acceptance: { message: 'must be abided' }
+    validates :DOB,comparison: {less_than_or_equal_to: Date.today,message:"birthday can't be in future"}
+    before_validation :check_DOB
 	after_destroy DestroyCallback.new , if: after_destroy_commit
 
 	#ater_initialize callback
@@ -47,5 +45,4 @@ class Student < ApplicationRecord
 		def check_DOB
 			puts "DOB is : #{self.DOB}"
 		end
-
 end
