@@ -5,7 +5,7 @@ class Student < ApplicationRecord
     validates :Terms_Of_Condition, acceptance: { message: 'must be abided' }
     t=Time.new
     t=t.strftime("%Y-%m-%d")
-    validates :DOB,comparison: {less_than_or_equal_to: t,message:"birthday can't be in future"}
+    validates :DOB,comparison: {less_than_or_equal_to: Date.today,message:"birthday can't be in future"}
     
 
     # validate :DOB_cannot_be_in_the_future
