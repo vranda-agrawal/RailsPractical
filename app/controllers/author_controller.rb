@@ -2,6 +2,8 @@ class AuthorController < ApplicationController
   # GET /products or /products.json
   def index
     @authors = Author.all
+    puts "===================================="
+    puts @authors
   end
 
   # GET /products/1 or /products/1.json

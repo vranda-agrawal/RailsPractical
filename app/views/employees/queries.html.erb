@@ -1,0 +1,271 @@
+<h3>1) List employees having age > 20 and < 40</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+  </tr>
+  <% Employee.where(age: 20..40).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+<br/><br/>
+<h3>List employees which are full_time_available</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.where(full_time_available: true).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>List employees which have exact 5 number of orders and age > 25</h3>
+
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.where("age > 20").where("no_of_order = 40").each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>List employees which are created before today</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.where("created_at < ?", Time.zone.now.end_of_day).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>List employees which have exact 5 number of orders Or age < 25<h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.where("age < 25").or(Employee.where("no_of_order = 5")).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>List employees in descending order by age</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.order(age: :desc).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>List employees in ascending order by number of order</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.order(no_of_order: :asc).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>List employees having salary > 45000</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.where("salary <= 45000").each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>Group employees by no_of_order with them and display employees with no_of_order > 5</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.group(:no_of_order).having("no_of_order < ?",5).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+
+<h3>Example of scope</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.where('id > 3').order('id desc').unscope(:order).each do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+<h3>Example of scope</h3>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+</tr>
+  <% Employee.where('id > 1').limit(2).order('id desc').only(:order, :where) do |e| %>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+     </tr>
+  <% end %>
+</table>
+<h3>Query of reselect</h3>
+<p>Employee.select(:id).reselect(:created_at)</p>
+
+<h3>Query of order</h3>
+<p>Employee.find(10).reorder('id DESC')</p>
+
+<h3>Reverse Order</h3>
+<p>Book.order(:id).reverse_order</p>
