@@ -16,8 +16,6 @@ class OrdersController < ApplicationController
   end
 
   def create
-    puts("=----------------------------------------------------------------------------------")
-    puts(params)
     @order = Order.create!(order_params)
     if @order.valid?
       redirect_to '/orders'
@@ -52,15 +50,12 @@ class OrdersController < ApplicationController
   end
   
   def destroy
-    puts"========================destroy=================================="
     @order = Order.find(params[:id])
     @order.destroy
     redirect_to '/orders'
   end
   
   def filter_data
-    puts"==========================================================================="
-    puts params
     if params[:type].blank?
       return
     else

@@ -20,8 +20,6 @@ class ShopproductsController < ApplicationController
   end
 
   def create
-    puts("=----------------------------------------------------------------------------------")
-    puts(params)
     @product = Shopproduct.create(product_params)
     if @product.valid?
       redirect_to '/shopproducts'
@@ -46,7 +44,6 @@ class ShopproductsController < ApplicationController
   end
   
   def destroy
-    puts"========================destroy=================================="
     @product = Shopproduct.find(params[:id])
     @product.destroy
     redirect_to '/shopproducts'

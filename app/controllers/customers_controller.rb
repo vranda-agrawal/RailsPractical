@@ -19,8 +19,6 @@ class CustomersController < ApplicationController
   end
 
   def create
-    puts("=----------------------------------------------------------------------------------")
-    puts(params)
     @customer = Customer.create(customer_params)
     if @customer.valid?
       redirect_to '/customers'
@@ -41,7 +39,6 @@ class CustomersController < ApplicationController
   end
   
   def destroy
-    puts"========================destroy=================================="
     @customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to '/customer'
