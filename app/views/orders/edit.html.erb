@@ -1,0 +1,9 @@
+<h1> Edit book </h1>
+<%= form_with model: @order do |form| %>
+  <%= form.number_field :quantity, placeholder: 'Quantity' %><br/>
+  <%= form.number_field :total_price,:readonly => true, placeholder: 'Total Price' ,:readonly => true %><br/>
+  <%= collection_select(:order, :shopproduct_id, Shopproduct.all, :id, :title) %><br/>
+  <%= form.select :status, ["booked","cancelled"] %><br/>
+  <%= collection_select(:order, :customer_id, Customer.all, :id, :fname) %><br/>
+  <%= form.submit %>
+<% end %>

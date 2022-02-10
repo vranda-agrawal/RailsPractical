@@ -1,0 +1,26 @@
+<td><%= button_to "Filter by type booked",filter_data_orders_path, method: 'get',params: {type: "booked"} %></td>
+<td><%= button_to "Filter by type cancelled",filter_data_orders_path, method: 'get',params: {type: "cancelled"} %></td>
+<% if (@order != nil) %>
+  <% @order.each do |order| %>
+    <div class="section" >
+    <div class="container">
+      <table border='2px'>
+        <tr>
+            <th>Quantity</th>
+            <th>Total Price</th>
+            <th>Shopproduct Id</th>
+            <th>Status</th>
+            <th>Customer Id</th>
+        </tr>
+        <tr>
+            <td><%= order.quantity %></td>
+            <td><%= order.total_price %></td>
+            <td><%= order.shopproduct_id %></td>
+            <td><%= order.status %></td>
+            <td><%= order.customer_id %></td>
+        </tr>
+      </table>
+    </div>
+    </div>
+  <% end %>
+<% end %>
