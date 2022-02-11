@@ -6,6 +6,7 @@ class EmployeesController < ApplicationController
 
   def search
     if params[:q].blank?
+      flash[:errors]=""
       return
     else
       email=params[:q]
