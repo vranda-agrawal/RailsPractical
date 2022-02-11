@@ -1,0 +1,9 @@
+<h1> Edit book </h1>
+<%= form_with model: @author do |form| %>
+  <%= form.text_field :first_name, placeholder: 'first_name' %>
+  <%= form.text_field :last_name, placeholder: 'last_name' %>
+
+  <%= form.date_field :DOB, placeholder: 'DOB' %>
+  <%= form.text_field :email, placeholder: 'email' %>
+  <%= form.submit %>
+<% end %>

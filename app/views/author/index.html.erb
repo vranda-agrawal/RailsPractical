@@ -1,0 +1,27 @@
+<div class="section" >
+  <div class="container">
+    <table border='2px'>
+      <tr>
+        <th>author first name</th>
+        <th>last name</th>
+        <th>DOB</th>
+        <th>Email id</th>
+        <th>Edit</th>
+        <th>show</th>
+        <th>Delete</th>
+      </tr>
+      <% @authors.each do |author| %>
+        <tr>
+          <td><%= author.id %></td>
+          <td><%= author.first_name %></td>
+          <td><%= author.last_name %></td>
+          <td><%= author.email %></td>
+          <td><%= link_to "Edit book", edit_author_path(id: author.id) %></td>
+          <td><%= link_to "Show Book", author_path(id: author.id) %></td>
+          <td><%= link_to "Destroy Book",edit_author_path(id: author.id),method: :delete ,data:{confirm: "are you sure"} %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to "Add a new Author", new_author_path %>
+  </div>
+</div>
