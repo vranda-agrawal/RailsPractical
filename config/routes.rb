@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :products
+  resources :students
+  resources :faculties
+
   resources :books
   resources :author
   resources :images
