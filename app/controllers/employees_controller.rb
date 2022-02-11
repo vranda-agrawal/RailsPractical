@@ -22,7 +22,7 @@ class EmployeesController < ApplicationController
   def increment
     Employee.find_in_batches(batch_size: 10) do |e|
       e.each do |emp|
-      emp.no_of_order=emp.no_of_order+1
+      emp.no_of_order+=1
       emp.save
       end
     end
@@ -32,7 +32,7 @@ class EmployeesController < ApplicationController
   def decrement
     Employee.find_in_batches(batch_size: 10) do |e|
       e.each do |emp|
-      emp.no_of_order=emp.no_of_order-1
+      emp.no_of_order-=1
       emp.save
       end
     end
