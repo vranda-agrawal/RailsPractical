@@ -1,0 +1,28 @@
+<h1> Student Details </h1>
+<table border=" solid 3px ">
+  <tr>
+  <th>First_name</th>
+  <th>Last_name</th>
+  <th>DOB</th>
+  <th>Phone Number</th>
+  <th>Email</th>
+  <th>Designation</th>
+  </tr>
+   <% @faculties.each do |faculty| %>
+    <tr>
+      <td><%=faculty.first_name %></td>
+      <td><%=faculty.last_name %></td>
+      <td><%=faculty.DOB %></td>
+      <td><%=faculty.phone_number %></td>
+      <td><%=faculty.email %></td>
+      <td><%=faculty.designation %></td>
+      <td><%= link_to "Edit Faculty", edit_faculty_path(id: faculty.id) %></td>
+      <td><%= link_to "Show Faculty", faculty_path(id: faculty.id) %></td>
+      <td><%= button_to "Destroy Faculty",faculty_path(id: faculty.id),
+            method: 'delete' ,
+            data:{ confirm: "are you sure"}%></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to "Add a new Faculty", new_faculty_path %>
+ 
