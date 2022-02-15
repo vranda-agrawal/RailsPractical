@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_130157) do
+ActiveRecord::Schema.define(version: 2022_02_10_043024) do
 
   create_table "Students", force: :cascade do |t|
     t.string "first_name"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2022_02_04_130157) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "author_id"
     t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string "fname"
+    t.string "lname"
+    t.string "email"
+    t.integer "phone_number"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "employees", force: :cascade do |t|
@@ -73,6 +82,16 @@ ActiveRecord::Schema.define(version: 2022_02_04_130157) do
     t.index ["book_id"], name: "index_images_on_book_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.integer "quantity"
+    t.float "total_price"
+    t.integer "shopproduct_id"
+    t.integer "status"
+    t.integer "customer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "brand"
@@ -82,6 +101,16 @@ ActiveRecord::Schema.define(version: 2022_02_04_130157) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "shopproducts", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.integer "price"
+    t.integer "capacity"
+    t.boolean "is_active"
+    t.integer "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   add_foreign_key "books", "authors"
   add_foreign_key "images", "authors"

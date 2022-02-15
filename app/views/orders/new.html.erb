@@ -1,0 +1,8 @@
+<h1> Add New Orders</h1>
+<%= form_with model: @order do |form| %>
+  <%= form.number_field :quantity, placeholder: 'Quantity' %><br/>
+  <%= collection_select(:order, :shopproduct_id, Shopproduct.all, :id, :title) %><br/>
+  <%= form.select :status, ["booked","cancelled"] %><br/>
+  <%= collection_select(:order, :customer_id, Customer.all, :id, :fname) %><br/>
+  <%= form.submit %>
+<% end %>

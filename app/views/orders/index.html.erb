@@ -1,0 +1,35 @@
+<div class="section" >
+  <div class="container">
+    <table border='2px'>
+      <tr>
+        <th>Quantity</th>
+        <th>Total Price</th>
+        <th>Shopproduct Id</th>
+        <th>Status</th>
+        <th>Customer Id</th>
+        <th>customer first name</th>
+        <th>customer last name</th>
+        <th>customer Email</th>
+        <th>customer Phone number</th>
+        
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.quantity %></td>
+          <td><%= order.total_price %></td>
+          <td><%= order.shopproduct_id %></td>
+          <td><%= order.status %></td>
+          <td><%= order.customer_id %></td>
+          <td><%= order.customer.fname %></td>
+          <td><%= order.customer.lname %></td>
+          <td><%= order.customer.email %></td>
+          <td><%= order.customer.phone_number %></td>
+          <td><%= link_to "Edit order", edit_order_path(id: order.id) %></td>
+          <td><%= link_to "Show order", order_path(id: order.id) %></td>
+          <td><%= button_to "Destroy order",order_path(id: order.id),method: 'delete' ,data:{confirm: "are you sure"} %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to "Add a new Order", new_order_path %>
+  </div>
+</div>

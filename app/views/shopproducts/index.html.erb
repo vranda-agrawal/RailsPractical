@@ -1,0 +1,31 @@
+<div class="section" >
+  <div class="container">
+    <table border='2px'>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th>capacity</th>
+        <th>Is Active</th>
+        <th>Status</th>
+        <th>Total number of order of this product are<th>
+        
+      </tr>
+      <% @products.each do |product| %>
+        <tr>
+          <td><%= product.title %></td>
+          <td><%= product.description %></td>
+          <td><%= product.price %></td>
+          <td><%= product.capacity %></td>
+          <td><%= product.is_active %></td>
+          <td><%= product.status %></td>
+           <td><%= Order.where("shopproduct_id = ?",product.id).count%>
+          <td><%= link_to "Edit book", edit_shopproduct_path(id: product.id) %></td>
+          <td><%= link_to "Show Book", shopproduct_path(id: product.id) %></td>
+          <td><%= button_to "Destroy Book",shopproduct_path(id: product.id),method: 'delete' ,data:{confirm: "are you sure"} %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to "Add a new Product", new_shopproduct_path %>
+  </div>
+</div>
