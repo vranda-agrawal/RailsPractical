@@ -1,0 +1,32 @@
+<h1>Filter page</h1>
+<% if !flash[:errors].empty? %>
+  <div >
+    <ul>
+        <li style="color:red;"><%= flash[:errors] %></li>
+     </ul>
+  </div>
+<% end %>
+<%= form_tag(filter_events_path, :method => "get") do %>
+  <%= label_tag(:q, "Choose Your Category:") %>
+  <%= collection_select(:q, :category_id, Category.all, :id, :name) %><br/>
+  <%= submit_tag("Show") %>
+<% end %>
+<% if (@events != nil) %>
+<table border=" solid 3px ">
+  <tr>
+  <th>ID</th>
+  <th>Event Name</th>
+  <th>Event Description</th>
+  <th>Event Date</th>
+  </tr>
+   <% @events.each do |event| %>
+    <tr>
+      <td><%=event.id %></td>
+      <td><%=event.name %></td>
+      <td><%=event.description %></td>
+      <td><%=event.date %></td>
+      <td><%= link_to "Enrol", user_enrol_event_path(id: event.id) %></td>
+    </tr>
+  <% end %>
+</table>
+<% end %>
