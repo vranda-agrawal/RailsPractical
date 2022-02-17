@@ -1,0 +1,25 @@
+<div class="section" >
+  <div class="container">
+    <table border='2px'>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        
+      </tr>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td><%= customer.fname %></td>
+          <td><%= customer.lname %></td>
+          <td><%= customer.email %></td>
+          <td><%= customer.phone_number %></td>
+          <td><%= link_to "Edit book", edit_customer_path(id: customer.id) %></td>
+          <td><%= link_to "Show Book", customer_path(id: customer.id) %></td>
+          <td><%= button_to "Destroy Book",customer_path(id: customer.id),method: 'delete' ,data:{confirm: "are you sure"} %></td>
+        </tr>
+      <% end %>
+    </table>
+    <%= link_to "Add a new Customer", new_customer_path %>
+  </div>
+</div>

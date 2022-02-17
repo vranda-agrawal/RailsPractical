@@ -1,0 +1,32 @@
+<h1>Employee Details</h1>
+<table border="solid 3px">
+  <tr>
+    <td>First_name</td>
+    <td>Last_name</td>
+    <td>email</td>
+    <td>age</td>
+    <td>No of order</td>
+    <td>full time available</td>
+    <td>salary</td>
+  </tr>
+  <% @employees.each do |e|%>
+    <tr>
+      <td><%= e.first_name%></td>
+      <td><%= e.last_name%></td>
+      <td><%= e.email%></td>
+      <td><%= e.age%></td>
+      <td><%= e.no_of_order%></td>
+      <td><%= e.full_time_available%></td>
+      <td><%= e.salary%></td>
+      <td><%= link_to "Edit employee", edit_employee_path(id: e.id) %></td>
+      <td><%= link_to "Show employee", employee_path(id: e.id) %></td>
+      <td><%= button_to "Destroy employee",employee_path(id: e.id),method: 'delete' , data:{ confirm: "are you sure"}%></td>
+    </tr>
+	<% end %>
+</table>
+<%= link_to "Add a new Faculty", new_employee_path %>
+<br/>
+<td><%= button_to "Increment Order By One",increment_path ,method: 'get' %></td>
+<td><%= button_to "decrement Order By One",decrement_path ,method: 'get'%></td>
+
+

@@ -1,0 +1,8 @@
+<h1> Edit book </h1>
+<%= form_with model: @customer do |form| %>
+  <%= form.text_field :fname, placeholder: 'first name' %><br/>
+  <%= form.text_field :lname, placeholder: 'last name' %><br/>
+  <%= form.text_field :email, placeholder: 'email' %><br/>
+  <%= form.number_field :phone_number, placeholder: 'phone number' %><br/>
+  <%= form.submit %>
+<% end %>

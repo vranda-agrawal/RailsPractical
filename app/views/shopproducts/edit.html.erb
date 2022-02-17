@@ -1,0 +1,10 @@
+<h1> Edit book </h1>
+<%= form_with model: @product do |form| %>
+  <%= form.text_field :title, placeholder: 'title' %><br/>
+  <%= form.text_field :description, placeholder: 'description' %><br/>
+  <%= form.number_field :price, placeholder: 'price' %><br/>
+  <%= form.number_field :capacity, placeholder: 'capacity' %><br/>
+  <%= form.check_box :is_active %><br/>
+  <%= form.select :status, ["in_stock", "out_of_stock", "coming_soon"] %><br/>
+  <%= form.submit %>
+<% end %>
