@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :books
   resources :author
   resources :images
+  resources :staffs, only: [:index, :show, :destroy, :update, :edit, :new, :create] do
+    collection do
+      get :search
+    end
+  end
   resources :customers, only: [:index, :show, :delete, :update, :edit, :new, :create] do
     collection do
       get :most_booked_order_of_product
