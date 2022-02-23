@@ -1,0 +1,5 @@
+<%= form_with model: [:business, @customer] do |form| %>
+  <%= form.text_field :name, placeholder: 'Enter your name' %><br/>
+  <%= form.text_field :gender, placeholder: 'gender' %><br/>
+  <%= form.submit %>
+<% end %>

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :books
   resources :author
   resources :images
+  resources :food_products do
+    resources :food_orders,only: [:show, :edit, :update, :destroy, :new, :create]
+  end
+  resources :food_orders, only: [:index]
   resources :customers, only: [:index, :show, :delete, :update, :edit, :new, :create] do
     collection do
       get :most_booked_order_of_product
@@ -26,11 +30,18 @@ Rails.application.routes.draw do
       get :search
     end
   end
+  namespace :business do
+    resources :buyers, only: [:index, :edit, :create] do
+        #get 'search', on: :collection
+        get 'preview', on: :member
+        delete 'delete_customer', on: :member
+        patch 'update', on: :member
+        get 'new', on: :collection, as: 'new'
+    end
+  end
 
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   post '/books/save', to: 'books#save', as: 'save'
   post '/author/save', to: 'author#save', as: 'author_save' 
   root "customers#home"
-  # Defines the root path route ("/")
-  # root "articles#index"
+
 end

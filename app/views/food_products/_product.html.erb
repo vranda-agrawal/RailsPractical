@@ -1,0 +1,5 @@
+<%= form_with model: @product do |form| %>
+  <%= form.collection_select :food_product_id, FoodProduct.order(:name), :id, :name %>
+  <%= form.number_field :quantity, placeholder: 'quantity' %><br/>
+  <%= form.submit %>
+<% end %>
