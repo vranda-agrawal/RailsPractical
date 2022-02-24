@@ -7,9 +7,7 @@ class FoodOrdersController < ApplicationController
   end
 
   def index
-    puts "-------------------------------------index -----------------------------------------------"
     @orders=@product.food_orders
-    puts @orders
   end
 
   def show
@@ -20,13 +18,10 @@ class FoodOrdersController < ApplicationController
   end
 
   def edit
-    puts"======================================================================================"
-    puts params
   end
 
   def create
     @order = @product.food_orders.build(order_params)
-    puts @order.food_product.id
     if @order.save
       redirect_to '/food_orders'
     else 
@@ -36,7 +31,6 @@ class FoodOrdersController < ApplicationController
   
   def update
     @order.update(order_params)
-    puts @order.food_product.id
     redirect_to food_orders_path
   end
 
@@ -51,12 +45,10 @@ class FoodOrdersController < ApplicationController
 
   private
   def get_product
-    puts"=============================get_product====================================="
     @product=FoodProduct.find(params['food_product_id'])
   end
 
   def set_order
-    puts"=============================set_order====================================="
     @order=@product.food_orders.find(params['id'])
   end
 end

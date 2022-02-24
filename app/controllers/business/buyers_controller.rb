@@ -41,8 +41,6 @@ class Business::BuyersController < ApplicationController
   end
 
   def search
-    puts "------------------------search-------------------------------"
-    puts params
     if params[:q].blank?
       flash[:errors]=""
       return
@@ -56,8 +54,8 @@ class Business::BuyersController < ApplicationController
       end  
     end
   end
-	private
-	def find_customer
-		@customer=Buyer.find(params[:id])
-	end
+  private
+  def find_customer
+    @customer=Buyer.find(params[:id])
+  end
 end
