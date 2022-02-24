@@ -13,8 +13,6 @@ class StaffsController < ApplicationController
   end
 
   def create
-    puts "-------------------------------------------------------------------------------------------------------------"
-    puts params
     @staff=Staff.create(staff_params)
     if @staff.valid?
       redirect_to '/staffs'
@@ -66,7 +64,6 @@ class StaffsController < ApplicationController
 
   private
   def staff_params
-    puts"-----------------------------------------"
-      params.require(:staff).permit(:employee_name,:email,:password,:gender,{hobbies:[]},:address,:mobile_number,:birth_date,:document, employee_addresses_attributes: [:house_name,:street_name,:road])
+    params.require(:staff).permit(:employee_name,:email,:password,:gender,{hobbies:[]},:address,:mobile_number,:birth_date,:document, employee_addresses_attributes: [:house_name,:street_name,:road])
   end
 end
