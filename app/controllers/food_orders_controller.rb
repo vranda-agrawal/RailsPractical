@@ -1,9 +1,15 @@
 class FoodOrdersController < ApplicationController
-  before_action :get_product,except: [:index]
+  before_action :get_product,except: [:show_all]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
-  def index
+  def show_all
     @orders = FoodOrder.all
+  end
+
+  def index
+    puts "-------------------------------------index -----------------------------------------------"
+    @orders=@product.food_orders
+    puts @orders
   end
 
   def show

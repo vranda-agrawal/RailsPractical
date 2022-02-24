@@ -40,6 +40,22 @@ class Business::BuyersController < ApplicationController
     redirect_to '/business/buyers'
   end
 
+  def search
+    puts "------------------------search-------------------------------"
+    puts params
+    if params[:q].blank?
+      flash[:errors]=""
+      return
+    else
+      name=params[:q]
+      @customer=Buyer.where(name:name)
+      if @customer.blank?
+        flash[:errors] = "Data not found"
+      else
+        flash[:errors]=""
+      end  
+    end
+  end
 	private
 	def find_customer
 		@customer=Buyer.find(params[:id])

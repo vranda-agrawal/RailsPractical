@@ -10,6 +10,8 @@
        <td><%= @products.name %></td>
         <td><%= @products.description %></td>
         <td><%= @products.price %></td>
+        <td><%= link_to "Show all its order", food_product_food_orders_path(@products) %></td>
+          
       </tr>
     </table>
   </div>
