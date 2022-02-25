@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     event_id=params[:id]
     enrolled=Enrol.create(event_id: event_id,user_id: user )
     if enrolled.valid?
-      redirect_to "/"
+      redirect_to events_path
     else
       puts "Cound not enroll in "
     end
