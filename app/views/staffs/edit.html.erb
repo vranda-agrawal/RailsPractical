@@ -21,7 +21,7 @@
       <%= form.label :male, "Male" %>
   </div>
   <% ['dancing','singing'].each do |hobbies| %>
-    <%= check_box_tag 'hobbies', hobbies, @staff.hobbies.to_s.include?(hobbies) %>
+    <%= check_box_tag "staff[hobbies][]", hobbies, @staff.hobbies.to_s.include?(hobbies) %>
     <%= form.label :hobbies, "#{hobbies}" %>
  <% end %>
   <div>
