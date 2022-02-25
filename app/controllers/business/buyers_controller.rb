@@ -17,7 +17,7 @@ class Business::BuyersController < ApplicationController
   end
 
   def create
-    @customer = Buyer.create(product_params)
+    @customer = Buyer.create(customer_params)
     if @customer.valid?
       redirect_to '/business/buyers'
     else 
@@ -31,10 +31,6 @@ class Business::BuyersController < ApplicationController
     redirect_to business_buyers_path
   end
 
-  def customer_params
-    params.require(:buyer).permit(:name,:gender)
-  end
-  
   def delete_customer
     @customer.destroy
     redirect_to '/business/buyers'
@@ -42,20 +38,22 @@ class Business::BuyersController < ApplicationController
 
   def search
     if params[:q].blank?
-      flash[:errors]=""
       return
     else
       name=params[:q]
       @customer=Buyer.where(name:name)
       if @customer.blank?
-        flash[:errors] = "Data not found"
-      else
-        flash[:errors]=""
+        flash[:alert] = "Data not found"
       end  
     end
   end
+
   private
   def find_customer
     @customer=Buyer.find(params[:id])
+  end
+  
+  def customer_params
+    params.require(:buyer).permit(:name,:gender)
   end
 end

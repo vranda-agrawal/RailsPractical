@@ -1,8 +1,8 @@
 <h1 style align='center'>Search Page</h1>
-<% if !flash[:errors].empty? %>
+<% if flash[:alert] %>
   <div >
     <ul>
-      <li style="color:red;"><%= flash[:errors] %></li>
+      <li style="color:red;"><%= flash[:alert] %></li>
      </ul>
   </div>
 <% end %>
