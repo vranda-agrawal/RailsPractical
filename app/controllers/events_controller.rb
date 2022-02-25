@@ -10,7 +10,8 @@ class EventsController < ApplicationController
   end
   
   def create
-    @event=Event.create(name: params[:event][:name],description: params[:event][:description],date: params[:event][:date],user_id: session[:user_id],category_id: params[:category_id][:category_id])
+    puts params
+    @event=Event.create(event_params)
     if @event.valid?
       redirect_to events_path
     else 
@@ -36,7 +37,7 @@ class EventsController < ApplicationController
 
   def update
     @event = Event.find(params[:id])
-    @event.update(name: params[:event][:name],description: params[:event][:description],date: params[:event][:date],user_id: session[:user_id],category_id: params[:category_id][:category_id])
+    @event.update(event_params)
     if @event.valid?
       redirect_to events_path
     else 
@@ -75,10 +76,13 @@ class EventsController < ApplicationController
       category_id=params[:q][:category_id]
       @events=Event.where(category_id: category_id)
       if @events.blank?
-        flash[:errors] = "Data not found"
-      else
-        flash[:errors]=""
+        flash[:alert] = "Data not found"
       end  
     end
+  end
+
+  private
+  def event_params
+    params.require(:event).permit(:user_id,:name,:description,:date,:category_id)
   end
 end

@@ -1,6 +1,9 @@
 <h1>Add New Event</h1>
 <%= form_for @event do |form| %>
   <div>
+    <%= form.hidden_field :user_id, value: current_user.id %>
+  </div>
+  <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
@@ -14,7 +17,7 @@
   </div>
   <div>
     <%= label_tag(:category_id, "Choose Your Category:") %>
-    <%= collection_select(:category_id, :category_id, Category.all, :id, :name) %><br/>
+    <%= collection_select("event", :category_id, Category.all, :id, :name) %><br/>
   </div>
   <div>
     <%= form.submit %>
