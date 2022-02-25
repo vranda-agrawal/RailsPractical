@@ -43,7 +43,7 @@ class Business::BuyersController < ApplicationController
       name=params[:q]
       @customer=Buyer.where(name:name)
       if @customer.blank?
-        flash[:alert] = "Data not found"
+        flash.now[:alert] = "Data not found"
       end  
     end
   end
