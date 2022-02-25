@@ -17,7 +17,7 @@ class StaffsController < ApplicationController
     if @staff.valid?
       redirect_to '/staffs'
     else 
-      flash[:errors] = @staff.errors.full_messages
+      flash[:alert] = @staff.errors.full_messages
       redirect_to new_staff_path
     end
   end
