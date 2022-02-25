@@ -9,12 +9,12 @@
         <tr>
           <td><%= customer.name %></td>
           <td><%= customer.gender %></td>
-          <td><%= link_to "Edit Order", edit_business_buyer_path(customer.id) %></td>
-          <td><%= link_to "Show Order", preview_business_buyer_path(customer.id) %></td>
-          <td><%= button_to "Destroy Order",delete_customer_business_buyer_path(customer.id),method: 'delete' ,data:{confirm: "are you sure"} %></td>
+          <td><%= link_to "Edit Buyer", edit_business_buyer_path(customer.id) %></td>
+          <td><%= link_to "Show Buyer", preview_business_buyer_path(customer.id) %></td>
+          <td><%= button_to "Destroy Buyer",delete_customer_business_buyer_path(customer.id),method: 'delete' ,data:{confirm: "are you sure"} %></td>
         </tr>
       <% end %>
     </table>
   </div>
-  <%= link_to "Add new customer", new_business_buyers_path %>
+  <%= link_to "Add new buyer", new_business_buyers_path %>
 </div>
