@@ -76,7 +76,7 @@ class EventsController < ApplicationController
       category_id=params[:q][:category_id]
       @events=Event.where(category_id: category_id)
       if @events.blank?
-        flash[:alert] = "Data not found"
+        flash.now[:alert] = "Data not found"
       end  
     end
   end
