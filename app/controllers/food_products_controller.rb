@@ -31,13 +31,16 @@ class FoodProductsController < ApplicationController
     redirect_to food_products_path
   end
 
-  def product_params
-    params.require(:food_product).permit(:name,:description,:price)
-  end
   
   def destroy
     @product = FoodProduct.find(params[:id])
     @product.destroy
     redirect_to '/food_products'
   end
+  
+  private
+  def product_params
+    params.require(:food_product).permit(:name,:description,:price)
+  end
+
 end
