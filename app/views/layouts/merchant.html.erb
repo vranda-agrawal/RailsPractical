@@ -10,7 +10,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body style="background-color: green;">
+  <body style="background-color: blue;">
     <% if notice %>
       <p><%= notice %></p>
     <% end %>
@@ -18,5 +18,9 @@
       <p><%= alert %></p>
     <% end %>
     <%= yield %>
+    <p>To see products click on this link</p>
+    <td><%= link_to "Products",food_products_path %></td>
+    <p>To see all the orders click on this link</p>
+    <td><%= link_to "Orders",food_orders_path %></td>
   </body>
 </html>

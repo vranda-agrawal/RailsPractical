@@ -1,4 +1,5 @@
 class FoodOrdersController < ApplicationController
+  before_action :check_user_role,except: [:show_all,:show,:index]
   before_action :get_product,except: [:show_all]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
@@ -50,5 +51,11 @@ class FoodOrdersController < ApplicationController
 
   def set_order
     @order=@product.food_orders.find(params['id'])
+  end
+
+  def check_user_role
+    if current_my_user.role=='merchant'
+      redirect_to '/home/index'
+    end
   end
 end

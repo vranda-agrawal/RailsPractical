@@ -6,10 +6,4 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
   end
-
-  def after_sign_in_path_for(resource)
-    puts "======================================================================================================"
-    products_path
-    # return the path based on resource
-  end
 end
