@@ -8,6 +8,19 @@ Rails.application.routes.draw do
   resources :staffs, only: [:index, :show, :destroy, :update, :edit, :new, :create] do
     collection do
       get :search
+  resources :users, only: [:new,:create] do
+    collection do
+      get :user_profile
+    end
+  end
+  resources :sessions
+  resources :events, only: [:index, :show, :destroy, :update, :edit, :new, :create] do
+    member do
+      get :user_enrol
+    end
+    collection do
+      get :filter
+      get :add_comment
     end
   end
   resources :customers, only: [:index, :show, :delete, :update, :edit, :new, :create] do

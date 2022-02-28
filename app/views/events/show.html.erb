@@ -1,0 +1,32 @@
+<h1>Event</h1>
+<div >
+  <p>
+    <strong>Id:</strong>
+    <%= @event.id %>
+  </p>
+  <p>
+    <strong>Event Name:</strong>
+    <%= @event.name %>
+  </p>
+  <p>
+    <strong>Event Description:</strong>
+    <%= @event.description %>
+  </p>
+  <p>
+    <strong>Event Date:</strong>
+    <%= @event.date %>
+  </p>
+  <p>Add Your Comment</p>
+  <%= form_tag(add_comment_events_path, :method => "get") do %>
+  <input type='text' name='comment' />
+  <input type='hidden' name='event_id' value=<%=@event.id%> >
+  <%= submit_tag("Add Comment") %>
+  <%end%>
+  <p>
+    <strong>Comments of all user:</strong>
+    <% @event.comments.each do |c| %>
+    <p><%= c.user.username %> :<%= c.comment %></p> 
+    <hr>
+    <%end%>
+  </p>
+</div>
