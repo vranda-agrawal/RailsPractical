@@ -1,0 +1,8 @@
+<h1>Home Page</h1>
+<p>Welcome <%=current_my_user.email%></p>
+<p>Welcome <%=current_my_user.role%></p>
+<% if current_my_user.role == 'admin' %>
+  <h1>You have admin access</h1>
+<%else%>
+	<h1>You have user access</h1>
+<%end%>

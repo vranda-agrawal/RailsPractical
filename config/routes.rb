@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :my_users
+  get 'home/index'
+  devise_for :views
   resources :products
   resources :students
   resources :faculties
@@ -43,6 +46,7 @@ Rails.application.routes.draw do
 
   post '/books/save', to: 'books#save', as: 'save'
   post '/author/save', to: 'author#save', as: 'author_save' 
-  root "food_products#index"
-
+  #root "food_products#index"
+  root "home#index"
+  resources :my_users
 end
