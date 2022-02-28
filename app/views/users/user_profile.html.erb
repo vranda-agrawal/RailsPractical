@@ -1,0 +1,23 @@
+<h1>User profile</h1>
+<td><%= button_to "Logout",session_path(id: @user.id) ,method: 'delete' ,data:{confirm: "are you sure"} %></td>
+<h4>Username : <%= @user.username %></h4>
+<h4>Email Id : <%= @user.email %></h4>
+<h4>Address : <%= @user.address.fulladdress %></h4>
+<h4>Events you are enrolled in</h4>
+<table border=" solid 3px ">
+  <tr>
+  <th>ID</th>
+  <th>Event Name</th>
+  <th>Event Description</th>
+  <th>Event Date</th>
+  </tr>
+  <% @enrolled_events.each do |e| %>
+    <tr>
+      <td><%=e.event.id %></td>
+      <td><%=e.event.name %></td>
+      <td><%=e.event.description %></td>
+      <td><%=e.event.date %></td>
+    </tr>
+  <% end %>
+</table>
+<td><%= link_to "Check all events", events_path %></td>

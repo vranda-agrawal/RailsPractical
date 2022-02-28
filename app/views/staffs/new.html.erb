@@ -1,0 +1,66 @@
+<h1>Add New Staff</h1>
+<% if flash[:alert] %>
+  <div >
+    <ul>
+      <% flash[:alert].each do |error| %>
+        <li style="color:red;"><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with model: @staff do |form| %>
+  <div>
+    <%= form.label :employee_name, style: "display: block" %>
+    <%= form.text_field :employee_name %>
+  </div>
+  <div>
+    <%= form.label :email, style: "display: block" %>
+    <%= form.email_field :email %>
+  </div>
+  <div>
+    <%= form.label :password, style: "display: block" %>
+    <%= form.password_field :password %>
+  </div>
+   <div>
+    <%= form.radio_button :gender, "female" %>
+    <%= form.label :female, "Female" %>
+    <%= form.radio_button :gender, "male" %>
+    <%= form.label :male, "Male" %>
+  </div>
+   <div>
+    <%= form.check_box :hobbies,{multiple: true}, "dancing",false  %>
+    <%= form.label :dancing, "Dancing" %>
+    <%= form.check_box :hobbies, {multiple: true}, "singing",false %>
+    <%= form.label :singing, "Singing" %>
+  </div>
+  <div>
+    <%= form.label :address, style: "display: block" %>
+    <%= form.text_field :address %>
+  </div>
+  <div>
+    <%=form.fields_for :employee_addresses do |a|%>
+    <%= form.label :house_name, style: "display: block" %>
+    <%= a.text_field :house_name %>
+    <%= form.label :street_name, style: "display: block" %>
+    <%= a.text_field :street_name %>
+    <%= form.label :road, style: "display: block" %>
+    <%= a.text_field :road %>
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :mobile_number, style: "display: block" %>
+    <%= form.telephone_field :mobile_number %>
+  </div>
+  <div>
+    <%= form.label :birth_date, style: "display: block" %>
+    <%= form.date_field :birth_date %>
+  </div>
+  <div>
+    <%=form.label :document %>
+    <%= form.file_field :document %>
+  </div>
+  <div>
+      <%= form.submit %>
+  </div>
+
+<%end%>

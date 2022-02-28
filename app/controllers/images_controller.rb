@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+  before_action :require_user, only: [:index, :show]
   # GET /products or /products.json
   def index
     @images = Image.all
