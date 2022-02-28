@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   resources :books
   resources :author
   resources :images
+  resources :staffs, only: [:index, :show, :destroy, :update, :edit, :new, :create] do
+    collection do
+      get :search
   resources :users, only: [:new,:create] do
     collection do
       get :user_profile

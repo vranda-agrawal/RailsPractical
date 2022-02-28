@@ -1,0 +1,55 @@
+<h1>Search page</h1>
+<% if !flash[:errors].empty? %>
+  <div >
+    <ul>
+      <li style="color:red;"><%= flash[:errors] %></li>
+    </ul>
+  </div>
+<% end %>
+<%= form_tag( search_staffs_path, :method => "get") do %>
+  <%= label_tag(:q, "Search data by employee name:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if (@staffs != nil) %>
+  <h1>Staff data found</h1>
+  <% @staffs.each do |staff| %>
+  <div >
+  <p>
+    <strong>Employee Name:</strong>
+    <%= staff.employee_name %>
+  </p>
+  <p>
+    <strong>email:</strong>
+    <%= staff.email %>
+  </p>
+  <p>
+    <strong>password:</strong>
+    <%= staff.password %>
+  </p>
+  <p>
+    <strong>gender:</strong>
+    <%= staff.gender %>
+  </p>
+  <p>
+    <strong>Hobbies:</strong>
+    <%= staff.hobbies %>
+  </p>
+  <p>
+    <strong>Address:</strong>
+    <%= staff.address %>
+  </p>
+  <p>
+    <strong>Mobile Number:</strong>
+    <%= staff.mobile_number %>
+  </p>
+  <p>
+    <strong>Birth Date:</strong>
+    <%= staff.birth_date %>
+  </p>
+  </div>
+
+  <% end %>
+<% end %>
+<%= link_to "Show Staff index page", staffs_path %><br/><br/>
