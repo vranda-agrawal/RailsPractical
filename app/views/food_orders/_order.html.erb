@@ -1,0 +1,5 @@
+<%= form_for ([@product,@order]) do |form| %>
+  <%= form.text_field :food_product_id, placeholder: 'food product id' %><br/>
+  <%= form.text_field :quantity, placeholder: 'quantity' %><br/>
+  <%= form.submit %>
+<% end %>

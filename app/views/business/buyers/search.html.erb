@@ -1,0 +1,29 @@
+<h1 style align='center'>Search Page</h1>
+<% if flash[:alert] %>
+  <div >
+    <ul>
+      <li style="color:red;"><%= flash[:alert] %></li>
+     </ul>
+  </div>
+<% end %>
+<%= form_tag(search_business_buyers_path, :method => "get") do %>
+  <%= label_tag(:q, "Search data by name:") %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
+<% end %>
+
+<% if (@customer != nil && @customer != []) %>
+  <h2 style="color:blue;">Customer data found</h2>
+  <div > 
+  <% @customer.each do |customer| %>
+    <p>
+      <strong>Name</strong>
+      <%= customer.name %>
+    </p>
+    <p>
+      <strong>Gender</strong>
+      <%= customer.gender %>
+    </p>
+  <%end%> 
+  </div>
+<% end %>

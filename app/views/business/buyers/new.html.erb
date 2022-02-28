@@ -1,0 +1,6 @@
+<h1> Add New Customer</h1>
+<%= form_for @customer, url: {action: "create"} do |form| %>
+  <%= form.text_field :name, placeholder: 'Enter your name' %><br/>
+  <%= form.text_field :gender, placeholder: 'gender' %><br/>
+  <%= form.submit %>
+<% end %>

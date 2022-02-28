@@ -1,0 +1,22 @@
+<div class="section" >
+  <div class="container">
+    <table border='2px'>
+      <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Quantity</th>  
+      </tr>
+      <% @orders.each do |order| %>
+        <tr>
+          <td><%= order.food_product_id %></td>
+          <td><%= order.food_product.name %></td>
+          <td><%= order.quantity %></td>
+          <td><%= link_to "Edit Order", edit_food_product_food_order_path(order.food_product_id,order.id) %></td>
+          <td><%= link_to "Show Order", food_product_food_order_path(order.food_product_id,order.id) %></td>
+          <td><%= button_to "Destroy Order",food_product_food_order_path(order.food_product_id,order.id),method: 'delete' ,data:{confirm: "are you sure"} %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+  <%= link_to "See all the products", food_products_path %>
+</div>

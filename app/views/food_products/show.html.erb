@@ -1,0 +1,23 @@
+<div class="section" >
+  <div class="container">
+    <table border='2px'>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Price</th>
+      </tr>
+      <tr>
+       <td><%= @products.name %></td>
+        <td><%= @products.description %></td>
+        <td><%= @products.price %></td>
+        <td><%= link_to "Show all its order", food_product_food_orders_path(@products) %></td>
+          
+      </tr>
+    </table>
+    <h3>All the orders of this product are:</h3>
+    <%@products.food_orders.each do |order|%>
+    <p><b>Product Id:  </b><%= order.food_product_id %>
+    <b>Quanitity:  </b><%= order.quantity %></p>
+    <% end %>     
+  </div>
+</div>
