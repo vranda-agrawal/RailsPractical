@@ -18,7 +18,13 @@
       <p><%= alert %></p>
     <% end %>
     <%= yield %>
-    <p>You can perform crud operation on all the product</p>
-    <td><%= link_to "Click here to perform crud on products",food_products_path %></td>
+    <% if controller_name!= 'food_products' %>
+      <p>You can perform crud operation on all the product</p>
+    <td><%= link_to "Click here to perform crud on products",food_products_path %></td><br/>
+    <%end%>
+    <%= button_to "Log Out", destroy_my_user_session_path, method: :delete  %><br/>
+    <% if controller_name!='home'%>
+      <%= link_to "Home",home_index_path %><br/>
+    <% end %>
   </body >
 </html>

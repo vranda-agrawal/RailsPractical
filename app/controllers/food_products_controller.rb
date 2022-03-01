@@ -1,6 +1,7 @@
 class FoodProductsController < ApplicationController
   before_action :check_user_role,except: [:index,:show]
-
+  layout :determine_layout 
+  
   def index
     @products = FoodProduct.all
   end
@@ -47,6 +48,14 @@ class FoodProductsController < ApplicationController
   def check_user_role
     if current_my_user.role=='merchant'
       redirect_to '/home/index'
+    end
+  end
+
+  def determine_layout
+    if current_my_user.role=='admin'
+      page_layout="admin"
+    else
+      page_layout="merchant"
     end
   end
 end

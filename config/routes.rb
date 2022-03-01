@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :staffs, only: [:index, :show, :destroy, :update, :edit, :new, :create] do
     collection do
       get :search
+    end
+  end
   resources :users, only: [:new,:create] do
     collection do
       get :user_profile
