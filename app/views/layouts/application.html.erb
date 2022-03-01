@@ -11,11 +11,14 @@
   </head>
 
   <body>
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+    <% end %> 
     <% if notice %>
-      <p><%= notice %></p>
+      <p style="color: red;"><%= notice %></p>
     <% end %>
     <% if alert %>
-      <p><%= alert %></p>
+      <p style="color: red;"><%= alert %></p>
     <% end %>
     <%= yield %>
   </body>
