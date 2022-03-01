@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :my_users
   get 'home/index'
+  root "home#index"
+  resources :my_user
   devise_for :views
   resources :products
   resources :students
@@ -23,7 +25,6 @@ Rails.application.routes.draw do
       get :user_profile
     end
   end
-  resources :sessions
   resources :events, only: [:index, :show, :destroy, :update, :edit, :new, :create] do
     member do
       get :user_enrol
@@ -67,6 +68,4 @@ Rails.application.routes.draw do
   post '/books/save', to: 'books#save', as: 'save'
   post '/author/save', to: 'author#save', as: 'author_save' 
   #root "food_products#index"
-  root "home#index"
-  resources :my_users
 end
