@@ -11,13 +11,13 @@
           <td><%= order.food_product_id %></td>
           <td><%= order.food_product.name %></td>
           <td><%= order.quantity %></td>
-          <%if current_my_user.role!='merchant'%>
+          <% if current_my_user.role!='merchant' %>
           <td><%= link_to "Edit Order", edit_food_product_food_order_path(order.food_product_id,order.id) %></td>
-          <%end%>
+          <% end %>
           <td><%= link_to "Show Order", food_product_food_order_path(order.food_product_id,order.id) %></td>
-          <%if current_my_user.role!='merchant'%>
+          <% if current_my_user.role!='merchant' %>
           <td><%= button_to "Destroy Order",food_product_food_order_path(order.food_product_id,order.id),method: 'delete' ,data:{confirm: "are you sure"} %></td>
-          <%end%>
+          <% end %>
         </tr>
       <% end %>
     </table>

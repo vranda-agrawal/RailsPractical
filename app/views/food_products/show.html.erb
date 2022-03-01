@@ -15,7 +15,7 @@
       </tr>
     </table>
     <h3>All the orders of this product are:</h3>
-    <%@products.food_orders.each do |order|%>
+    <% @products.food_orders.each do |order| %>
     <p><b>Product Id:  </b><%= order.food_product_id %>
     <b>Quanitity:  </b><%= order.quantity %></p>
     <% end %>     
