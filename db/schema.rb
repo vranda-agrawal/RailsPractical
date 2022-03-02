@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_23_103721) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_02_115119) do
   create_table "Food_Orders", force: :cascade do |t|
     t.integer "quantity"
     t.integer "food_product_id"
@@ -31,9 +31,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_103721) do
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.bigint "record_id", null: false
-    t.bigint "blob_id", null: false
-    t.datetime "created_at", precision: 6, null: false
+    t.integer "record_id", null: false
+    t.integer "blob_id", null: false
+    t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -46,21 +46,37 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_103721) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
-    t.datetime "created_at", precision: 6, null: false
+    t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.bigint "blob_id", null: false
+    t.integer "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
   create_table "addresses", force: :cascade do |t|
     t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "fulladdress"
+  end
+
+  create_table "api_v1_article_comments", force: :cascade do |t|
+    t.string "comment"
+    t.datetime "date_of_comment"
+    t.integer "article_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "api_v1_articles", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.datetime "release_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "authors", force: :cascade do |t|
@@ -97,8 +113,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_103721) do
   create_table "comments", force: :cascade do |t|
     t.integer "user_id"
     t.integer "event_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "comment"
   end
 
@@ -118,15 +134,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_103721) do
     t.integer "staff_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "employee_addresses", force: :cascade do |t|
-    t.string "house_name"
-    t.string "street_name"
-    t.string "road"
-    t.integer "staff_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "employees", force: :cascade do |t|
@@ -155,24 +162,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_103721) do
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_events_on_category_id"
-  end
-
-  create_table "enrols", force: :cascade do |t|
-    t.integer "event_id"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
-  create_table "events", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.date "date"
-    t.integer "user_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id"
     t.index ["category_id"], name: "index_events_on_category_id"
   end
@@ -254,27 +243,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_23_103721) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "username"
-  end
-
-  create_table "staffs", force: :cascade do |t|
-    t.string "employee_name"
-    t.string "email"
-    t.string "password"
-    t.string "gender"
-    t.string "address"
-    t.integer "mobile_number"
-    t.datetime "birth_date", precision: 6
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.text "hobbies"
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
     t.string "username"
   end
 
