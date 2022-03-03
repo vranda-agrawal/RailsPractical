@@ -38,7 +38,6 @@ class Business::BuyersController < ApplicationController
 
   def search
     if params[:q].blank?
-      puts "------------------------------------------------------------------------------------"
       return
     else
       name=params[:q]
