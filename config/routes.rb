@@ -72,6 +72,6 @@ Rails.application.routes.draw do
   end
   post '/books/save', to: 'books#save', as: 'save'
   post '/author/save', to: 'author#save', as: 'author_save' 
-  root "food_products#index"
+  #root "food_products#index"
 
 end
