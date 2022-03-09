@@ -1,4 +1,7 @@
 class FoodProductsController < ApplicationController
+  before_action :check_user_role,except: [:index,:show]
+  layout :determine_layout 
+  
   def index
     @products = FoodProduct.all
   end
@@ -30,17 +33,29 @@ class FoodProductsController < ApplicationController
     @product.update(product_params)
     redirect_to food_products_path
   end
-
   
   def destroy
     @product = FoodProduct.find(params[:id])
     @product.destroy
     redirect_to '/food_products'
   end
-  
   private
+
   def product_params
     params.require(:food_product).permit(:name,:description,:price)
   end
 
+  def check_user_role
+    if current_my_user.role=='merchant'
+      redirect_to '/home/index'
+    end
+  end
+
+  def determine_layout
+    if current_my_user.role=='admin'
+      page_layout="admin"
+    else
+      page_layout="merchant"
+    end
+  end
 end
