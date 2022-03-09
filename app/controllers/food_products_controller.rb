@@ -19,6 +19,8 @@ class FoodProductsController < ApplicationController
   end
 
   def create
+    puts"----------------------------------------------------------------------------------------"
+    puts product_params
     @product = FoodProduct.create(product_params)
     if @product.valid?
       redirect_to '/food_products'
@@ -42,7 +44,7 @@ class FoodProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:food_product).permit(:name,:description,:price)
+    params.require(:food_product).permit(:name,:description,:price,:my_user_id)
   end
 
   def check_user_role

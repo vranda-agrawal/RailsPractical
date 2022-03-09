@@ -3,11 +3,11 @@
 one:
   name: MyString
   description: MyString
-  event_name: 2022-02-15
+  date: 2022-02-15
   user_id: 1
 
 two:
   name: MyString
   description: MyString
-  event_name: 2022-02-15
+  date: 2022-02-15
   user_id: 1
