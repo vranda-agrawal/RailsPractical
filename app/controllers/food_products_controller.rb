@@ -3,7 +3,7 @@ class FoodProductsController < ApplicationController
   layout :determine_layout 
   
   def index
-    @products = FoodProduct.all
+    @products = current_my_user.food_products.all
   end
 
   def show

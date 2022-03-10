@@ -2,7 +2,7 @@ require "test_helper"
 
 class FoodProductTest < ActiveSupport::TestCase
   def setup
-    @my_user=MyUser.new(email:'vranda@gmail.com',password:'Vranda@123',role:1)
+    @my_user=MyUser.new(email:'vrandaa@gmail.com',password:'Vranda@123',role:1)
     @my_user.save
     @food_product = @my_user.food_products.create(name:'vranda',description:'tetsing',price:200.0)
   end
