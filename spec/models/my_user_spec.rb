@@ -30,4 +30,4 @@ RSpec.describe MyUser,type: :model do
   end
 
 end
-  
+ 

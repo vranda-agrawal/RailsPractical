@@ -5,4 +5,3 @@ class MyusersController < ApplicationController
   def show
   end
 end
-  
