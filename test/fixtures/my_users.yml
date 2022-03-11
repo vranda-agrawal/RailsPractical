@@ -2,3 +2,5 @@ my_user_001:
   id: 1
   email: admin@gmail.com
   encrypted_password: <%= MyUser.new.send(:password_digest, '123456') %>
+  role: "admin"
+  

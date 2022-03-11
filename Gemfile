@@ -39,17 +39,16 @@ gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
-
+gem 'ffi'
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
+gem 'rexml'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 group :development, :test do
-  gem 'rspec-rails', ">= 3.9.0"
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem "factory_bot_rails"
   gem 'rspec-rails', ">= 3.9.0"
@@ -61,7 +60,7 @@ group :development, :test do
   gem "pry"
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
-
+gem 'faker'
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"

@@ -16,7 +16,6 @@ RSpec.describe User, type: :request do
   it "should get show" do
     get food_product_path(@product)
     expect(response).to be_successful
-    puts "#{@user.email} - #{@product.description}"
   end
 
   it "should get new" do
@@ -29,15 +28,19 @@ RSpec.describe User, type: :request do
     expect(response).to be_successful
   end
 
+  it "should get updated" do
+    post food_products_path,:params =>{:food_product => {:name => 'bbb',:description => 'abcd',:price => 200.0,:my_user_id => 1},:id =>1 }
+    expect(FoodProduct.find_by(name: "bbb")).not_to be_nil
+  end
+
   it "should get delete" do
     delete "/food_products/#{@product.id}" 
     expect(FoodProduct.find_by(name: "abc")).to be_nil
   end
 
-#   it "should get create" do
-#     product_params = FactoryBot.attributes_for(:my_product)
-#     post :create, :my_product => product_params
-#     expect(response).to be_successful
-# end
-
+  it "should create product" do
+    post food_products_path,:params =>{:food_product => {:name => 'bbb',:description => 'abcd',:price => 200.0,:my_user_id => 1}}
+    #binding.pry
+    expect(FoodProduct.find_by(name: "bbb")).not_to be_nil
+  end
 end 
