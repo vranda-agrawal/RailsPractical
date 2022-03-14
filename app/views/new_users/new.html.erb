@@ -1,0 +1,52 @@
+<h1> Add a New User</h1>
+<%= form_with(model: @user,url: new_users_path,local: true) do |form| %>
+  <%= form.text_field :first_name, placeholder: 'First Name' ,onchange:"fun()"%><br/><br/>
+  <%= form.text_field :last_name, placeholder: 'Last Name' %><br/><br/>
+  <%= form.email_field :email, placeholder: 'email' %><br/><br/>
+  <%= form.password_field :password, placeholder: 'password' ,:id => "password"%><br/><br/>
+  <%= form.password_field :confirm_password, placeholder: 'confirm_password' ,onchange:"check_password();",:id => "confirm_password"%><br/><br/>
+  <%= form.label :Subscribe %>
+  <%= form.check_box :subscription,:id => "check",onclick:"myFunction()" %><br/><br/>
+  <%= form.email_field :subscription_email, placeholder: 'email',:id => "email",style:"display:none;"%><br/><br/>
+  <%= form.submit data: { disable_with: "Saving..." },:id => "form_submit",style:"display:none;"%>
+<% end %>
+<script>
+function check_password()
+{
+  var password = document.getElementById("password").value;
+  var confirm_password = document.getElementById("confirm_password").value;
+  console.log(password)
+  console.log(confirm_password)
+  if(password)
+    {
+      if(confirm_password==password)
+        {
+          alert("password matched...")
+          document.getElementById("check")
+          document.getElementById("form_submit").style.display="block"
+        }
+      else
+      {
+        alert("password is not matching")
+        //document.getElementById("confirm_password").value=""
+        document.getElementById("form_submit").style.display="none"
+      }
+    }
+  else
+  {
+    alert("please first type password")
+    document.getElementById("confirm_password").value=""
+  }
+}
+function myFunction() {
+  var checkBox = document.getElementById("check");
+  var email_field = document.getElementById("email");
+  if (checkBox.checked == true){
+    email_field.style.display="block"
+  } 
+  else {
+    //alert("unchecked")
+    email_field.style.display="none"
+  }
+}
+</script>

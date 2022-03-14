@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   resources :books
   resources :author
   resources :images
+  resources :new_users do
+    collection do
+      get :user_profile
+    end
+  end
   resources :food_products do
     resources :food_orders,only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end

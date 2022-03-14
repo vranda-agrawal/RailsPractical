@@ -1,0 +1,25 @@
+<h3>Index Page</h3>
+<div id="show-user">
+<table border='2px'>
+	<tr>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email</th>
+		<th>Subscription</th>
+		<th>Subscription Email</th>
+		
+	</tr>
+	<% @users.each do |user| %>
+		<tr>
+			<td><%= user.first_name %></td>
+			<td><%= user.last_name %></td>
+			<td><%= user.email %></td>
+			<td><%= user.subscription %></td>
+			<td><%= user.subscription_email %></td>
+			<td><%= link_to "Show user", new_user_path(id: user.id),remote: true , data: {turbo_confirm: "Are you sure?" } %></td>
+			<td><%= button_to "Destroy user",new_user_path(id: user.id), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete%></td>
+		</tr>
+	<% end %>
+</table>
+<td><%= link_to "Add order", new_new_user_path %></td>
+</div>
