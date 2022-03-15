@@ -1,0 +1,11 @@
+<%= form_with(model: @user,url: new_users_path,local: true) do |form| %>
+  <%= form.text_field :first_name, placeholder: 'First Name' ,onchange:"fun()"%><br/><br/>
+  <%= form.text_field :last_name, placeholder: 'Last Name' %><br/><br/>
+  <%= form.email_field :email, placeholder: 'email' %><br/><br/>
+  <%= form.password_field :password, placeholder: 'password' ,:id => "password"%><br/><br/>
+  <%= form.password_field :confirm_password, placeholder: 'confirm_password' ,onchange:"check_password();",:id => "confirm_password"%><br/><br/>
+  <%= form.label :Subscribe %>
+  <%= form.check_box :subscription,:id => "check",onclick:"myFunction()" %><br/><br/>
+  <%= form.email_field :subscription_email, placeholder: 'email',:id => "email",style:"display:none;"%><br/><br/>
+  <%= form.submit data: { disable_with: "Saving..." },:id => "form_submit",style:"display:none;"%>
+<% end %>

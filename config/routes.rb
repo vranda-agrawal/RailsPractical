@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   resources :author
   resources :images
   resources :new_users do
-    collection do
+    member do
       get :user_profile
+      patch :update_profile
+      get :change_password
+      post :update_password
     end
   end
   resources :food_products do

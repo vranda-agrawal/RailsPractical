@@ -17,9 +17,11 @@
 			<td><%= user.subscription %></td>
 			<td><%= user.subscription_email %></td>
 			<td><%= link_to "Show user", new_user_path(id: user.id),remote: true , data: {turbo_confirm: "Are you sure?" } %></td>
+			<td><%= link_to "Edit user data", edit_new_user_path(id: user.id),remote: true %></td>
+			<td><%= link_to "Show User Profile", user_profile_new_user_path(id: user.id),remote: true %></td>
 			<td><%= button_to "Destroy user",new_user_path(id: user.id), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete%></td>
 		</tr>
 	<% end %>
 </table>
-<td><%= link_to "Add order", new_new_user_path %></td>
+<td><%= link_to "Add New User", new_new_user_path %></td>
 </div>
