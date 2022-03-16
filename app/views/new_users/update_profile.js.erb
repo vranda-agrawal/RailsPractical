@@ -1,0 +1,2 @@
+$("#error").html('<%= escape_javascript(render('error', error: flash[:alert] )).html_safe %>');
+$("#update-data").html('<%= escape_javascript(render('updated_user_data', user: @user)).html_safe %>');

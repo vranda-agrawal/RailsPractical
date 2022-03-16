@@ -1,74 +1,78 @@
 class NewUsersController < ApplicationController
-	before_action :set_user, only: %i[ show edit update destroy user_profile update_profile change_password update_password]
+  before_action :set_user, only: %i[ show edit update destroy user_profile update_profile change_password update_password]
 
   def index
-		@users=NewUser.all
-	end
+    @users=NewUser.all
+  end
 
-	def new
-		@user=NewUser.new
-	end
+  def new
+    @user=NewUser.new
+  end
 
-	def create
-		puts "------------------------------------------------------------"
-		@user=NewUser.create(user_params)
-		if @user.valid?
-			puts "----------------------------------data succesfully saved-----------------------------------------------"
-			redirect_to new_users_path
+  def create
+    @user=NewUser.create(user_params)
+    if @user.valid?
+      respond_to do |format|
+        format.js
+      end
     else 
-			puts @new_users.errors.full_messages
-      flash[:alert] = @new_users.errors.full_messages
+      flash.now[:alert] = @user.errors.full_messages
       redirect_to new_users_path
-			#format.js
-		end
-	end
+    end
+  end
 
-	def user_profile
-	end
-	
-	def edit 	
-	end
-
-	def update_profile
-		puts params
-		if @user.update(user_params)
-			puts "----------------------------------data succesfully updated-----------------------------------------------"
-			redirect_to new_users_path
+  def user_profile
+  end
+  
+  def update_profile
+    binding.pry
+    if @user.update(user_params)
+      respond_to do |format|
+        format.js
+        flash.now[:alert]=["Successfully Updated"]
+      end
     else 
-			puts @user.errors.full_messages
-      flash[:alert] = @user.errors.full_messages
-      redirect_to update_profile_new_user_path
-		end
-	end
+      flash.now[:alert] = @user.errors.full_messages
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
 
-	def change_password
-	
-	end
+  def change_password
+    
+  end
 
-	def update_password
-		puts params
-		binding.pry
-		@user.update(password:params[:new_password])
-		binding.pry
-	end
+  def update_password
+    if(@user.password==params[:password])
+      binding.pry
+      @user.update_attribute(:password,params[:new_password])
+      redirect_to new_users_path
+    else 
+      flash.now[:alert]=["-------Incorrect old password---------"]
+      render "change_password"
+    end
+  end
 
-	def show
-		puts @user
-	end
+  def show
+  end
 
-	def destroy
-		@user.destroy
-		redirect_to new_users_path
-	end
-	
-	private
+  def destroy
+    @user.destroy
+    redirect_to new_users_path
+  end
 
-	def set_user
-		@user=NewUser.find(params[:id])
-	end
+  def check_password 
+  end
+  
+  private
 
-	def user_params
-		params.require(:new_user).permit(:first_name,:last_name,:email,:subscription,:subscription_email,:password)
-	end
+  def set_user
+    @user=NewUser.find(params[:id])
+  end
+
+  def user_params
+    params.require(:new_user).permit(:first_name,:last_name,:email,:subscription,:subscription_email,:password)
+  end
 
 end

@@ -1,11 +1,10 @@
-<%= form_with(model: @user,url: new_users_path,local: true) do |form| %>
-  <%= form.text_field :first_name, placeholder: 'First Name' ,onchange:"fun()"%><br/><br/>
-  <%= form.text_field :last_name, placeholder: 'Last Name' %><br/><br/>
-  <%= form.email_field :email, placeholder: 'email' %><br/><br/>
-  <%= form.password_field :password, placeholder: 'password' ,:id => "password"%><br/><br/>
-  <%= form.password_field :confirm_password, placeholder: 'confirm_password' ,onchange:"check_password();",:id => "confirm_password"%><br/><br/>
-  <%= form.label :Subscribe %>
-  <%= form.check_box :subscription,:id => "check",onclick:"myFunction()" %><br/><br/>
-  <%= form.email_field :subscription_email, placeholder: 'email',:id => "email",style:"display:none;"%><br/><br/>
-  <%= form.submit data: { disable_with: "Saving..." },:id => "form_submit",style:"display:none;"%>
-<% end %>
+<tr>
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.subscription %></td>
+  <td><%= user.subscription_email %></td>
+  <td><%= link_to "Show user", new_user_path(id: user.id) , data: {turbo_confirm: "Are you sure?" } %></td>
+  <td><%= link_to "Show User Profile", user_profile_new_user_path(id: user.id) %></td>
+  <td><%= button_to "Destroy user",new_user_path(id: user.id), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete%></td>
+</tr>

@@ -1,6 +1,8 @@
 <h3>Index Page</h3>
-<div id="show-user">
-<table border='2px'>
+<div id="error">
+</div>
+<div>
+<table border='2px' id="user-data" >
 	<tr>
 		<th>First Name</th>
 		<th>Last Name</th>
@@ -16,12 +18,73 @@
 			<td><%= user.email %></td>
 			<td><%= user.subscription %></td>
 			<td><%= user.subscription_email %></td>
-			<td><%= link_to "Show user", new_user_path(id: user.id),remote: true , data: {turbo_confirm: "Are you sure?" } %></td>
-			<td><%= link_to "Edit user data", edit_new_user_path(id: user.id),remote: true %></td>
-			<td><%= link_to "Show User Profile", user_profile_new_user_path(id: user.id),remote: true %></td>
+			<td><%= link_to "Show user", new_user_path(id: user.id) , data: {turbo_confirm: "Are you sure?" } %></td>
+			<td><%= link_to "Show User Profile", user_profile_new_user_path(id: user.id) %></td>
 			<td><%= button_to "Destroy user",new_user_path(id: user.id), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete%></td>
 		</tr>
 	<% end %>
 </table>
-<td><%= link_to "Add New User", new_new_user_path %></td>
 </div>
+<h1> Add a New User</h1>
+
+<%= form_with(model: @user,url: new_users_path,local: false,scope: :new_user) do |form| %>
+  <%= form.text_field :first_name, placeholder: 'First Name'%><br/><br/>
+  <%= form.text_field :last_name, placeholder: 'Last Name' %><br/><br/>
+  <%= form.email_field :email, placeholder: 'email' %><br/><br/>
+  <%= form.password_field :password, placeholder: 'password' ,:id => "password",onchange:"check_validation();"%><br/><br/>
+  <%= form.password_field :confirm_password, placeholder: 'confirm_password' ,onchange:"check_password();",:id => "confirm_password"%><br/><br/>
+  <%= form.label :Subscribe %>
+  <%= form.check_box :subscription,:id => "check",onclick:"myFunction()" %><br/><br/>
+  <%= form.email_field :subscription_email, placeholder: 'email',:id => "sub-email",style:"display:none;"%><br/>
+  <%= form.submit data: { disable_with: "Saving..." },:id => "form_submit",style:"display:none;"%>
+<% end %>
+<div id="target-for-change">
+</div>
+<script>
+function check_validation()
+{
+  var password = document.getElementById("password").value;
+  if(password.length <= 3 || password.length > 12)
+  {
+    alert("password length should be in between 3 and 12 characters")
+    document.getElementById("password").value=""
+  }
+}
+
+function check_password()
+{
+  var password = document.getElementById("password").value;
+  var confirm_password = document.getElementById("confirm_password").value;
+  console.log(password)
+  console.log(confirm_password)
+  if(password)
+    {
+      if(confirm_password==password)
+        {
+          alert("password matched...")
+          document.getElementById("form_submit").style.display="block"
+        }
+      else
+      {
+        alert("password is not matching")
+        document.getElementById("confirm_password").value=""
+        document.getElementById("form_submit").style.display=none
+      }
+    }
+  else
+  {
+    alert("please first type password")
+    document.getElementById("confirm_password").value=""
+  }
+}
+function myFunction() {
+  var checkBox = document.getElementById("check");
+  var email_field = document.getElementById("sub-email");
+  if (checkBox.checked == true){
+    email_field.style.display="block"
+  } 
+  else {
+    email_field.style.display="none"
+  }
+}
+</script>

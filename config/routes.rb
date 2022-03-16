@@ -17,6 +17,9 @@ Rails.application.routes.draw do
       get :change_password
       post :update_password
     end
+    collection do
+      post :check_password
+    end
   end
   resources :food_products do
     resources :food_orders,only: [:index, :show, :edit, :update, :destroy, :new, :create]

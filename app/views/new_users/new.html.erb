@@ -1,5 +1,4 @@
 <h1> Add a New User</h1>
-
 <%= form_with(model: @user,url: new_users_path,local: false) do |form| %>
   <%= form.text_field :first_name, placeholder: 'First Name' ,onchange:"fun()"%><br/><br/>
   <%= form.text_field :last_name, placeholder: 'Last Name' %><br/><br/>
@@ -17,10 +16,10 @@ function check_validation()
 {
   var password = document.getElementById("password").value;
   if(password.length <= 3 || password.length > 12)
-  {
-    alert("password length should be in between 3 and 12 characters")
-    document.getElementById("password").value=""
-  }
+    {
+      alert("password length should be in between 3 and 12 characters")
+      document.getElementById("password").value=""
+    }
 }
 
 function check_password()
@@ -38,25 +37,28 @@ function check_password()
           document.getElementById("form_submit").style.display="block"
         }
       else
-      {
-        alert("password is not matching")
-        //document.getElementById("confirm_password").value=""
-        document.getElementById("form_submit").style.display="none"
-      }
+        {
+          alert("password is not matching")
+          //document.getElementById("confirm_password").value=""
+          document.getElementById("form_submit").style.display="none"
+        }
     }
   else
-  {
-    alert("please first type password")
-    document.getElementById("confirm_password").value=""
-  }
+    {
+      alert("please first type password")
+      document.getElementById("confirm_password").value=""
+    }
 }
-function myFunction() {
+function myFunction() 
+{
   var checkBox = document.getElementById("check");
   var email_field = document.getElementById("email");
-  if (checkBox.checked == true){
+  if (checkBox.checked == true)
+  {
     email_field.style.display="block"
   } 
-  else {
+  else 
+  {
     email_field.style.display="none"
   }
 }
