@@ -19,8 +19,6 @@ class FoodProductsController < ApplicationController
   end
 
   def create
-    puts"----------------------------------------------------------------------------------------"
-    puts product_params
     @product = FoodProduct.create(product_params)
     if @product.valid?
       redirect_to '/food_products'
