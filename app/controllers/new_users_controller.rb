@@ -25,7 +25,6 @@ class NewUsersController < ApplicationController
   end
   
   def update_profile
-    binding.pry
     if @user.update(user_params)
       respond_to do |format|
         format.js
