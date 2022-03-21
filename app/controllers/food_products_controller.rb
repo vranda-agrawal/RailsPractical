@@ -3,7 +3,7 @@ class FoodProductsController < ApplicationController
   layout :determine_layout 
   
   def index
-    @products = FoodProduct.all
+    @products = current_my_user.food_products.all
   end
 
   def show
@@ -42,7 +42,7 @@ class FoodProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:food_product).permit(:name,:description,:price)
+    params.require(:food_product).permit(:name,:description,:price,:my_user_id)
   end
 
   def check_user_role

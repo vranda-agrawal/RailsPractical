@@ -5,6 +5,7 @@
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
+        <th>User email</th>
         
       </tr>
       <% @products.each do |product| %>
@@ -12,6 +13,7 @@
           <td><%= product.name %></td>
           <td><%= product.description %></td>
           <td><%= product.price %></td>
+          <td><%=current_my_user.email%></td>
           <% if current_my_user.role!='merchant' %>
             <td><%= link_to "Edit product", edit_food_product_path(id: product.id) %></td>
           <% end %>
