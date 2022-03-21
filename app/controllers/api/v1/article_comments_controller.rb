@@ -20,7 +20,7 @@ class Api::V1::ArticleCommentsController < ApplicationController
   end
 
   def search
-    @article_comment=Api::V1::ArticleComment.find_by comment: params[:comment]
+    @article_comment=Api::V1::ArticleComment.find_by(comment: params[:comment])
     if @article_comment.blank?
       render json: {message:'data not found with this comment'}
     else

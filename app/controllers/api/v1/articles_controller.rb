@@ -25,7 +25,7 @@ class Api::V1::ArticlesController < ApplicationController
   end
 
   def search
-    @article=Api::V1::Article.find_by title: params[:title]
+    @article=Api::V1::Article.find_by(title: params[:title])
     if @article.blank?
       render json: {message:'data not found with this title'}
     else
