@@ -1,0 +1,9 @@
+<% if flash[:alert] %>
+  <div >
+    <ul>
+      <% flash[:alert].each do |error| %>
+        <li style="color:red;"><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

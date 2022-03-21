@@ -1,0 +1,58 @@
+<h3>User Profile</h3>
+<div id="error">
+</div>
+<table border='2px'>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>Subscription</th>
+    <th>Subscription Email</th>
+    
+  </tr>
+  <tr id='update-data'>
+    <td><%= @user.first_name %></td>
+    <td><%= @user.last_name %></td>
+    <td><%= @user.email %></td>
+    <td><%= @user.subscription %></td>
+    <td><%= @user.subscription_email %></td>		
+  </tr>
+</table>
+<br/>
+<br/>
+<h3>Update User Profile</h3>
+<%= form_with(model: @user,url: update_profile_new_user_path,local: false,scope: :new_user) do |form| %>
+  <%= form.text_field :first_name, placeholder: 'First Name' %><br/><br/>
+  <%= form.text_field :last_name, placeholder: 'Last Name' %><br/><br/>
+  <%= form.email_field :email, placeholder: 'email',onchange:"showpassword();" %><br/><br/>
+  <%= form.password_field :password, placeholder: 'Please enter your password' ,:id => "password",style:"display:none;"%><br/>
+  <%= form.label :Subscribe %>
+  <%= form.check_box :subscription,:id => "check",onclick:"myFunction()" %><br/><br/>
+  <% if @user.subscription%>
+    <%= form.email_field :subscription_email, placeholder: 'email',:id => "email"%><br/><br/>
+  <% else %>
+    <%= form.email_field :subscription_email, placeholder: 'email',:id => "email",style:"display:none;"%><br/>
+  <% end %>
+  <%= form.submit data: { disable_with: "Saving..." },:id => "form_submit" %>
+<% end %><br/>
+<%= link_to "click here to change password", change_password_new_user_path(id: @user.id) %><br/>
+  
+<script>
+
+function showpassword()
+{
+  document.getElementById("password").style.display="block"
+}
+function myFunction() 
+{
+  var checkBox = document.getElementById("check");
+  var email_field = document.getElementById("email");
+  if (checkBox.checked == true){
+    email_field.style.display="block"
+  } 
+  else {
+    email_field.style.display="none"
+  }
+}
+
+</script>

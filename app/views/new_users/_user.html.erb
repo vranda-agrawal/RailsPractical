@@ -1,0 +1,10 @@
+<tr>
+  <td><%= user.first_name %></td>
+  <td><%= user.last_name %></td>
+  <td><%= user.email %></td>
+  <td><%= user.subscription %></td>
+  <td><%= user.subscription_email %></td>
+  <td><%= link_to "Show user", new_user_path(id: user.id) , data: {turbo_confirm: "Are you sure?" } %></td>
+  <td><%= link_to "Show User Profile", user_profile_new_user_path(id: user.id) %></td>
+  <td><%= button_to "Destroy user",new_user_path(id: user.id), form: { data: { turbo_confirm: "Are you sure?" } }, method: :delete%></td>
+</tr>

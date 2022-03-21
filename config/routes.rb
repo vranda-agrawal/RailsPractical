@@ -10,6 +10,17 @@ Rails.application.routes.draw do
   resources :books
   resources :author
   resources :images
+  resources :new_users do
+    member do
+      get :user_profile
+      patch :update_profile
+      get :change_password
+      post :update_password
+    end
+    collection do
+      post :check_password
+    end
+  end
   resources :food_products do
     resources :food_orders,only: [:index, :show, :edit, :update, :destroy, :new, :create]
   end
