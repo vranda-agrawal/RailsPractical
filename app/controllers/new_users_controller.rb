@@ -45,7 +45,6 @@ class NewUsersController < ApplicationController
 
   def update_password
     if(@user.password==params[:password])
-      binding.pry
       @user.update_attribute(:password,params[:new_password])
       redirect_to new_users_path
     else 

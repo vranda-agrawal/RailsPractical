@@ -13,53 +13,53 @@
 
 <script>
 function check_validation()
-{
-  var password = document.getElementById("password").value;
-  if(password.length <= 3 || password.length > 12)
-    {
-      alert("password length should be in between 3 and 12 characters")
-      document.getElementById("password").value=""
-    }
-}
+  {
+    var password = document.getElementById("password").value;
+    if(password.length <= 3 || password.length > 12)
+      {
+        alert("password length should be in between 3 and 12 characters")
+        document.getElementById("password").value=""
+      }
+  }
 
 function check_password()
-{
-  var password = document.getElementById("password").value;
-  var confirm_password = document.getElementById("confirm_password").value;
-  console.log(password)
-  console.log(confirm_password)
-  if(password)
-    {
-      if(confirm_password==password)
-        {
-          alert("password matched...")
-          document.getElementById("check")
-          document.getElementById("form_submit").style.display="block"
-        }
-      else
-        {
-          alert("password is not matching")
-          //document.getElementById("confirm_password").value=""
-          document.getElementById("form_submit").style.display="none"
-        }
-    }
-  else
-    {
-      alert("please first type password")
-      document.getElementById("confirm_password").value=""
-    }
-}
-function myFunction() 
-{
-  var checkBox = document.getElementById("check");
-  var email_field = document.getElementById("email");
-  if (checkBox.checked == true)
   {
-    email_field.style.display="block"
-  } 
-  else 
-  {
-    email_field.style.display="none"
+    var password = document.getElementById("password").value;
+    var confirm_password = document.getElementById("confirm_password").value;
+    console.log(password)
+    console.log(confirm_password)
+    if(password)
+      {
+        if(confirm_password==password)
+          {
+            alert("password matched...")
+            document.getElementById("check")
+            document.getElementById("form_submit").style.display="block"
+          }
+        else
+          {
+            alert("password is not matching")
+            //document.getElementById("confirm_password").value=""
+            document.getElementById("form_submit").style.display="none"
+          }
+      }
+    else
+      {
+        alert("please first type password")
+        document.getElementById("confirm_password").value=""
+      }
   }
-}
+function myFunction() 
+  {
+    var checkBox = document.getElementById("check");
+    var email_field = document.getElementById("email");
+    if (checkBox.checked == true)
+      {
+        email_field.style.display="block"
+      } 
+    else 
+      {
+        email_field.style.display="none"
+      }
+  }
 </script>
