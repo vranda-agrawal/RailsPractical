@@ -1,6 +1,6 @@
 require "test_helper"
 
-class StaffAddressTest < ActiveSupport::TestCase
+class Api::V1::ArticleTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

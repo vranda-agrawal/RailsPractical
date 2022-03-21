@@ -75,7 +75,16 @@ Rails.application.routes.draw do
         get 'new', on: :collection, as: 'new'
     end
   end
-
+  namespace :api do
+    namespace :v1 do
+      resources :articles do
+        get 'search', on: :collection
+      end
+      resources :article_comments do
+        get 'search', on: :collection
+      end
+    end
+  end
   post '/books/save', to: 'books#save', as: 'save'
   post '/author/save', to: 'author#save', as: 'author_save' 
   #root "food_products#index"

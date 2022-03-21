@@ -1,6 +1,7 @@
 <%= form_with model: @product do |form| %>
-  <%= form.text_field :name, placeholder: 'Food Product Name' %><br/>
-  <%= form.text_field :description, placeholder: 'Food Product Description' %><br/>
-  <%= form.number_field :price, placeholder: 'price' %><br/>
-  <%= form.submit %>
+  <%= form.text_field :name, placeholder: 'Food Product Name' %><br/><br/>
+  <%= form.text_field :description, placeholder: 'Food Product Description' %><br/><br/>
+  <%= form.number_field :price, placeholder: 'price' %><br/><br/>
+  <%= form.text_field :my_user_id,value: current_my_user.id %><br/><br/>
+  <%= form.submit %><br/><br/>
 <% end %>
