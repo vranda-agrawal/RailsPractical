@@ -50,6 +50,7 @@ class NewUsersController < ApplicationController
       redirect_to new_users_path
     else 
       flash.now[:alert]=["-------Incorrect old password---------"]
+      puts flash[:alert]
       render "change_password"
     end
   end
@@ -59,6 +60,7 @@ class NewUsersController < ApplicationController
 
   def destroy
     @user.destroy
+
     redirect_to new_users_path
   end
 
