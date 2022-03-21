@@ -9,11 +9,9 @@ class FoodProductsControllerTest < ActionDispatch::IntegrationTest
   end
   
   setup do
-    puts "--------------------------------------------------------------------------------------"
     get '/my_users/sign_in'
     sign_in my_users(:my_user_001)
     post my_user_session_url
-    puts "----------------------------------------------------------------------------------------"
   end
 
   test "should get index" do
