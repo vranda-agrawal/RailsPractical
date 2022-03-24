@@ -1,4 +1,4 @@
-class User001Controller < ApplicationController
+class User001sController < ApplicationController
   def index
     @user = User001.all
   end
@@ -9,12 +9,14 @@ end
 
 def new
   @user = User001.new
+  @user.picture = params[:picture]
 end
 
 def create
-  @user=User001.create(faculty_params)
+  @user=User001.create(user_params)
   if @user.valid?
-    redirect_to '/user001'
+    User001Mailer.user_create_mail(@user).deliver_later
+    redirect_to '/user001s'
   else 
     flash[:errors] = @user.errors.full_messages
     redirect_to new_user001_path
@@ -22,14 +24,16 @@ def create
 end
 
 def edit
+  puts params
   @user= User001.find(params['id'])
 end
 
 def update
 @user = User001.find(params[:id])
-@user.update(faculty_params)
+@user.update(user_params)
   if @user.valid?
-    redirect_to '/user001'
+    puts @user.changed
+    redirect_to '/user001s'
   else 
     flash[:errors] = @user.errors.full_messages
     redirect_to edit_user001_path
@@ -39,11 +43,13 @@ end
 def destroy
   @user = User001.find(params[:id])
   @user.destroy
-  redirect_to '/faculties'
+  redirect_to '/user001s'
 end
 
 private
-def faculty_params
-    params.require(:faculty).permit(:first_name,:last_name,:DOB,:phone_number,:email,:designation)
+
+def user_params
+  params.require(:user001).permit(:name,:email,:picture)
 end
+
 end
