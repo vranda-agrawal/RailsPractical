@@ -10,8 +10,9 @@
   </head>
 
   <body>
-    <h1>Hey, you have successfully updated your mail</h1>
-
+    <h1>User Created</h1>
+    <h1 class="heading">Welcome to Your website <%= @user.name %></h1>
+    <%= image_tag attachments['welcome.webp'].url %>
     <%= yield %>
   </body>
 </html> 

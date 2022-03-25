@@ -6,22 +6,20 @@ class User001Mailer < ApplicationMailer
     attachments.inline['welcome.webp'] = File.read('app/assets/images/welcome.webp')
     @user=user
     puts @user
-    mail(to: email_address_with_name(@user.email, @user.name),subject: 'Welcome to our website') 
-    # do |format|
-    #   puts "================================================================================="
-    #   format.html { render html:"" layout: 'update_email' }
-    #   format.text
-    # end
+    mail(to: email_address_with_name(@user.email, @user.name),subject: 'Welcome to our website') do |format|
+      binding.pry
+      format.html { render(layout: "user_create") }
+      format.text
+    end
   end
 
   def update_email_mail(user)
     @user=user
     puts @user
-    mail(to: email_address_with_name(@user.email, @user.name),subject: 'Successfully Updated your email id') 
-    # do |format|
-    #   format.html 
-    #   format.text
-    # end
+    mail(to: email_address_with_name(@user.email, @user.name),subject: 'Successfully Updated your email id') do |format|
+      format.html { render(layout: false) }
+      format.text
+    end
   end
 
 end
