@@ -19,7 +19,7 @@ Rails.application.configure do
 
   #mailer configurations
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  config.action_mailer.delivery_method = :letter_opener
+  #config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.default_options = {from: 'vrandaagrawal410@gmail.com'}
@@ -28,8 +28,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'localhost:3000',
-    :user_name => 'vrandaagrawal410@gmail.com',
-    :password => 'Vranda@sep14',
+    :user_name => ENV['username'],
+    :password => ENV['password'],
     authentication: 'plain',
     enable_starttls_auto: true 
   }

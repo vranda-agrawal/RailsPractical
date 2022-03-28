@@ -1,5 +1,4 @@
 class User001Mailer < ApplicationMailer
-  default from: email_address_with_name('vrandaagrawal410@gmail.com','Vranda Agrawal')
   #layout 'user'
 
   def user_create_mail(user)
@@ -7,8 +6,7 @@ class User001Mailer < ApplicationMailer
     @user=user
     puts @user
     mail(to: email_address_with_name(@user.email, @user.name),subject: 'Welcome to our website') do |format|
-      binding.pry
-      format.html { render(layout: "user_create") }
+      format.html { render layout: "user_create" }
       format.text
     end
   end
@@ -17,7 +15,7 @@ class User001Mailer < ApplicationMailer
     @user=user
     puts @user
     mail(to: email_address_with_name(@user.email, @user.name),subject: 'Successfully Updated your email id') do |format|
-      format.html { render(layout: false) }
+      format.html { render layout: "update_email" }
       format.text
     end
   end
