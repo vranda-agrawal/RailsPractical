@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :books
   resources :author
   resources :images
+  resources :user001s
   resources :new_users do
     member do
       get :user_profile
